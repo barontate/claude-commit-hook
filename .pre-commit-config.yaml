@@ -1,17 +1,15 @@
-# Pre-commit hooks for this repository.
-# After cloning, run:  pre-commit install --hook-type pre-commit --hook-type prepare-commit-msg
+# Hooks for developing this repo itself. After cloning, run:  pre-commit install
+default_install_hook_types: [pre-commit, prepare-commit-msg]
 
 repos:
-  # Generic hygiene hooks (normal pre-commit stage). Remove or extend as needed.
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
-      - id: check-added-large-files
 
-  # Claude Code writes a draft commit message from the staged diff.
+  # Dogfood: use the hook from this checkout.
   - repo: local
     hooks:
       - id: claude-commit-msg
