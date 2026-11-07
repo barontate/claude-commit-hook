@@ -7,9 +7,36 @@ you can edit or accept it.
 
 ## Requirements
 
+- **Claude Code CLI**: installed, logged in and on your `PATH`. The Claude
+  desktop app does **not** include the CLI, so install it separately
+  ([setup docs](https://docs.claude.com/en/docs/claude-code/setup)):
+
+  ```bash
+  # macOS / Linux / WSL
+  curl -fsSL https://claude.ai/install.sh | bash
+  ```
+
+  ```powershell
+  # Windows (PowerShell)
+  irm https://claude.ai/install.ps1 | iex
+  ```
+
+  Then run `claude` once to log in.
 - `pre-commit` 3.2 or later
-- Claude Code CLI installed, on your `PATH`, and logged in (`claude` works in a terminal)
 - On Windows, Git for Windows, which provides the bash the hook runs in
+
+> **If the commit message comes up empty:** the hook skips silently whenever it
+> can't reach Claude, so it never blocks a commit. Check that Claude Code is
+> reachable from Git's bash:
+>
+> ```bash
+> bash -c "command -v claude"   # should print a path
+> ```
+>
+> On Windows, run that command in **Git Bash**. In PowerShell, `bash` starts
+> WSL, not Git's bash. If nothing prints, add the folder that contains
+> `claude` to your user `PATH`, then restart your terminal and editor. With the
+> native installer, that folder is usually `%USERPROFILE%\.local\bin`.
 
 ## Usage
 
